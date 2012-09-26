@@ -7,6 +7,22 @@
   <version>1.0-SNAPSHOT</version>
   <name>Jive Developers Site Maven Webapp</name>
   <url>http://maven.apache.org</url>
+ 
+  <!-- ====================================================================== -->
+  <!-- R E P O S I T O R I E S                                                -->
+  <!-- ====================================================================== -->
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Maven Repository Switchboard</name>
+      <layout>default</layout>
+      <url>http://repo1.maven.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+ 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,7 +30,14 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+  
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.2</version>
+    </dependency>
   </dependencies>
+  
   <build>
     <finalName>developers</finalName>
   </build>
