@@ -33,6 +33,10 @@ public class JiveCommunityRssFetcher {
   private final String communityBaseFeedUrl;
   private final FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getInstance();
 
+  private String container;
+  private String content;
+  private String searchParams;
+
   /**
    * Default constructor
    */
@@ -42,6 +46,43 @@ public class JiveCommunityRssFetcher {
 
   public JiveCommunityRssFetcher(String baseURl) {
     this.communityBaseFeedUrl = baseURl;
+  }
+
+  /*  Bean accessors */
+  public String getSearchParams() {
+    return searchParams;
+  }
+
+  public void setSearchParams(String searchParams) {
+    this.searchParams = searchParams;
+  }
+
+  public String getContainer() {
+    return container;
+  }
+
+  public void setContainer(String container) {
+    this.container = container;
+  }
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+  /**
+   * Bean accessor for feeds from content and container.
+   *
+   * @return feeds
+   * @throws IOException
+   * @throws FeedException
+   * @throws FetcherException
+   */
+  public SyndFeed getContentFeeds() throws IOException, FeedException, FetcherException {
+    return this.getFeedsFromJiveContentType(container, content);
   }
 
   /**
@@ -68,6 +109,11 @@ public class JiveCommunityRssFetcher {
 
     SyndFeed feed = executeFeedUrl(feedUrlBuilder.toString());
     return feed;
+  }
+
+
+  public SyndFeed getSearchFeeds() throws IOException, FeedException, FetcherException {
+    return this.getFeedFromSearch(searchParams);
   }
 
   /**
