@@ -1,0 +1,491 @@
+
+
+/* ---------------------------------------------------------------------------------------------- */
+/*!XRST*/     /*! RESET */
+/* ---------------------------------------------------------------------------------------------- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+dfn, em, font, img, kbd, q, s, samp,
+small, strike, strong, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /*outline: 0;*/
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+em { font-style: italic; }
+strong { font-weight: bold; }
+small { font-size: .92em; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+caption,
+th,
+td {
+    text-align: left;
+    font-weight: normal;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after { content: ""; }
+
+blockquote,
+q { quotes: "" ""; }
+/* * { word-break: break-word; } TODO: test this in next major release */
+
+
+/* ---------------------------------------------------------------------------------------------- */
+/*!XCFX*/     /*! CLEARFIX */
+/* ---------------------------------------------------------------------------------------------- */
+/* for modern browsers */
+.jive-widget:after,
+.clearfix:after {
+    clear: both;
+    content: "'";
+    display: block;
+    font-size: 0; /* fix FF bug */
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+/* for IE7 */
+.clearfix { min-height: 0; }
+/* for IE<7 \*/
+* html .clearfix { height: 1%; }
+
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	color: #bbb;
+    line-height: 150%;
+    min-width: 980px;
+	background: url(../images/background_wood.jpg) #222;
+	overflow-x: hidden;}
+
+@font-face {
+    font-family: 'HandOfSeanRegular';
+    src: url('../css/handsean-webfont.eot');
+    src: url('../css/handsean-webfont.eot?') format('embedded-opentype'),
+    url('../css/handsean-webfont.woff') format('woff'),
+    url('../css/handsean-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 2px;
+}
+.deco {
+    font-family: 'HandOfSeanRegular', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 200;
+}
+
+
+a, img {
+	border: 0; text-decoration: none; outline: none;}
+a {
+	color: #fff;}
+a:hover {
+	color: #fcbd5b;
+    text-decoration: underline;
+}
+h1, h2, h3 {
+	font-size: 36px;
+	color: #fcbd5b;
+	text-shadow: 1px 2px 0 rgba(0,0,0,.5);
+    margin: 0 0 20px;
+}
+h1 {
+    font-family: 'Hand of Sean', cursive, serif;
+}
+h2 {
+	font-size: 24px;
+}
+h3 {
+	font-size: 18px;
+	margin: 0;
+	padding: 0 0 20px;
+}	/* Removable if you don't like it */
+h4 {
+	font-size: 18px;
+	text-shadow: 1px 1px 0 #000;
+	font-weight: 500;
+	margin: 0;
+	padding: 0 0 7px 40px;
+}
+blockquote {
+	margin: 0 40px 35px;
+	line-height: 130%;}
+ul {
+	list-style-type: none;}
+li {
+	padding: 7px 0 7px 20px;
+    position: relative;
+}
+li .j-icon-med {
+    position: absolute;
+    top: 9px;
+    left: 0;
+}
+
+.j-icon-sml,
+.j-icon-med,
+.j-icon-big {
+    background-color: transparent;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 0;
+    position: relative;
+}
+
+.j-icon-med {
+    background-image: url(../images/j-devsprite.png);
+    height: 16px;
+    width: 17px;
+    margin: 0 6px 0 0;
+    top: 2px;
+}
+
+.j-icon-community {
+    background-position: 0 -475px;
+}
+.j-icon-arrowright {
+    background-position: -215px -125px;
+    vertical-align: middle;
+    top: 0;
+}
+a:hover .j-icon-arrowright,
+.j-icon-arrowright:hover {
+    background-position: -215px -100px;
+}
+a:hover .j-icon-community,
+.j-icon-community:hover {
+    background-position: -20px -475px;
+}
+
+.j-siteHeader {
+    width: 100%;
+    height: 90px;
+    background: transparent url(../images/background-magic2.png) repeat-x;
+}
+
+.j-siteNav {
+    width: 950px;
+    margin: 0 auto;
+    position: relative;
+    background: url(../images/background_wood.jpg) #222;
+    text-align: right;
+}
+.j-siteNav ul {
+    height: 55px;
+    padding-left: 250px;
+    padding-top: 22px;
+    z-index: 2;
+}
+
+
+.homeSelected ul {
+    /*background: transparent url(../images/background-magic.png) repeat-x -1775px 0;*/
+    background: transparent url(../images/background-magic.png) repeat-x -1476px 0;
+}
+.documentationSelected ul {
+    background: transparent url(../images/background-magic.png) repeat-x -1360px 0;
+}
+.aboutSelected ul {
+    background: transparent url(../images/background-magic.png) repeat-x -1232px 0;
+}
+.j-siteNav li {
+    display: inline;
+    padding: 10px 20px;
+    margin: 15px 0 0;
+    font-size: 16px;
+    background: none;
+}
+
+.homeSelected a.home,
+.documentationSelected a.documentation,
+.aboutSelected a.about,
+.j-siteNav a:hover {
+    color: #fdbd5b;
+}
+
+
+.j-logoNav {
+    display: block;
+    width: 177px;
+    height: 35px;
+    background: transparent url(../images/j-devsprite.png) no-repeat 0 -425px;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    position: absolute;
+    top: 19px;
+    left: 0;
+}
+
+.j-siteNav .community {
+    margin-left: 10px;
+    padding-left: 30px;
+    border-left: solid 1px #555;
+    margin-right: -20px;
+}
+.j-siteNav .community .j-icon-med {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+}
+
+/* end site navigation styles */
+
+
+/*content pages*/
+
+
+.j-main,
+.j-bottom {
+    z-index: 1;
+    position: relative;
+    left: 50%;
+    width: 950px;
+    margin-left: -475px;
+    margin-top: -15px;
+    min-height: 600px;
+    border-left: 1px solid #1b1b1b;
+    border-right: 1px solid #1b1b1b;
+    border-left: 1px solid rgba(0,0,0,.8);
+    border-right: 1px solid rgba(0,0,0,.8);
+    box-shadow: inset 2px 0 0 -1px #3f3f3f, inset -2px 0 0 -1px #3f3f3f;
+    box-shadow: inset 2px 0 0 -1px rgba(80,80,80,.5), inset -2px 0 0 -1px rgba(80,80,80,.5);
+}
+
+.j-leftcol {
+    float: left;
+    width: 680px;
+}
+
+.j-content {
+    padding: 60px 40px;
+}
+
+.j-bottom .j-leftcol {
+    float: left;
+    width: 580px;
+    padding: 40px;
+    font-size: 14px;
+}
+
+
+.j-rightcol {
+    float: right;
+    width: 220px;
+}
+.j-sidebar {
+    padding: 60px 0 0;
+}
+.j-contentArea ul,
+.j-sidebar ul {
+    margin: 0 0 40px;
+}
+.j-belowContent {
+    position: relative;
+    left: 50%;
+    width: 950px;
+    margin-left: -475px;
+    border-left: 1px solid #111;
+    border-right: 1px solid #111;
+    box-shadow: inset 2px 0 0 -1px #2d2d2d, inset -2px 0 0 -1px #2d2d2d;
+}
+.developerBadge {
+    display: block;
+    width: 200px;
+    height: 200px;
+    background: transparent url(../images/j-devsprite.png) no-repeat -520px -100px;
+    margin: 40px 0;
+}
+
+
+/* homepage */
+
+.j-welcome p {
+    font-size: 16px;
+    margin: 55px 0;
+    width: 330px;
+}
+
+#getstartedbutton {				/* PSD has a slight gradient to the button which I left out */
+    float: right;
+    position: relative;
+    padding-right: 40px;
+    top: 30px;
+}
+#getstartedbutton .j-icon-med {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+}
+.j-btn {
+    padding: 10px 20px;
+    background: #fb9046;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    border: 1px solid #704217;
+    text-shadow: 0 1px 1px rgba(0,0,0,.1);
+    color: #fff;
+    font-size: 18px;
+    line-height: 18px;
+    height: 18px;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 2px;
+    -moz-box-shadow: rgba(0, 0, 0, .1) 0 1px 2px;
+    -webkit-box-shadow: rgba(0, 0, 0, .1) 0 1px 2px;
+    outline: none;
+}
+
+.j-btn:hover {
+    background: #fa7c25;
+    color: #fff;
+    text-decoration: none;
+}
+.j-btn:active {
+    background: #b54c04;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.beerMe {
+    position: absolute;
+    bottom: 35px;
+}
+
+.beerMe .shelf {
+    background: transparent url(../images/j-devsprite.png) no-repeat 0 0;
+    width: 640px;
+    height: 50px;
+    display: block;
+    margin: 0 10px;
+}
+
+.beerMe .taps {
+    position: absolute;
+    bottom: 30px;
+}
+
+.beerMe .tap  {
+    background: transparent url(../images/j-devsprite.png) no-repeat 0 -100px;
+    width: 50px;
+    height: 260px;
+    display: block;
+    margin: 0 57px;
+    float: left;
+    position: relative;
+}
+.tap span {
+    position: absolute;
+    top: -50px;
+    left: -15px;
+    width: 80px;
+    height: 40px;
+    display: block;
+}
+
+.apptap {
+    background: transparent url(../images/j-devsprite.png) no-repeat -120px -100px;
+}
+.doctap {
+    background: transparent url(../images/j-devsprite.png) no-repeat -120px -155px;
+}
+.apitap {
+    background: transparent url(../images/j-devsprite.png) no-repeat -120px -210px;
+}
+.ipatap {
+    background: transparent url(../images/j-devsprite.png) no-repeat -120px -265px;
+}
+
+.beerMe .tap:hover,
+.beerMe .tap:active {
+    background: transparent url(../images/j-devsprite.png) no-repeat -50px -100px;
+}
+
+.j-quickLinks {
+    font-size: 17px;
+    margin-left: -15px;
+}
+.j-quickLinks .j-icon-med {
+    top: 9px;
+    left: -2px;
+}
+#jiveworld12 {
+    position: absolute;
+    bottom: 0px;
+    right: 1px;
+    height: 150px;
+    width: 205px;
+    background: #222;
+    background-color: rgba(10,10,10,0.2);
+    padding: 25px 28px;
+    color: #888;
+    box-shadow: inset 0 0 8px 4px #222;
+}
+.j-recentContent .j-sidebar {
+    padding: 40px 5px;
+    margin: 0 0 0 -20px;
+}
+.j-recentContent li {
+    padding: 10px 7px 10px 36px;
+    position: relative;
+    min-height: 24px;
+}
+.j-recentContent li img {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border: 0;
+}
+.j-recentContent li:nth-child(even){
+    background: #222;
+    background: rgba(100,100,100, .1);
+}
+
+.j-recentContent .j-date {
+    font-size: 11px;
+    color: #888;
+}
+
+
+
+/*documentation page */
+
+.j-doclist {
+    padding: 40px 5px;
+    margin: 0 0 0 -5px;
+}
+
+.j-doclist li:nth-child(even){
+    background: #222;
+    background: rgba(100,100,100, .1)
+}
+
+
+#bottomwrapper {
+	width: 100%;
+    background: transparent url(../images/bottom_bg.png);
+	border-top: 1px solid #111;
+	box-shadow: inset 0 10px 25px -5px #282828, 0 2px 15px #222;}
+
+.gettingstarted p,
+.ipas p {
+    font-size: 16px;
+    margin: 0 0 30px;
+}
