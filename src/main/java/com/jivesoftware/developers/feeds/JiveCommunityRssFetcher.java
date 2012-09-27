@@ -30,9 +30,9 @@ public class JiveCommunityRssFetcher {
   private static final String TAGS_SEPARATOR = "AND";
   private static final String TAGS_ASSIGN = ":";
 
-  private final String communityBaseFeedUrl;
   private final FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getInstance();
 
+  private String communityBaseFeedUrl;
   private String container;
   private String content;
   private String searchParams;
@@ -49,6 +49,15 @@ public class JiveCommunityRssFetcher {
   }
 
   /*  Bean accessors */
+
+  public String getCommunityBaseFeedUrl() {
+    return communityBaseFeedUrl;
+  }
+
+  public void setCommunityBaseFeedUrl(String communityBaseFeedUrl) {
+    this.communityBaseFeedUrl = communityBaseFeedUrl;
+  }
+
   public String getSearchParams() {
     return searchParams;
   }
