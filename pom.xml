@@ -104,7 +104,7 @@
   </dependencies>
   
   <build>
-    <finalName>Jive Developers Site</finalName>
+    <finalName>devslanding</finalName>
     <resources>
       <resource>
         <directory>src/main/resources</directory>
