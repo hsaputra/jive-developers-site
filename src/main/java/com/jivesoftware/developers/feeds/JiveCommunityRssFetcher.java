@@ -1,5 +1,6 @@
 package com.jivesoftware.developers.feeds;
 
+import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.fetcher.FeedFetcher;
 import com.sun.syndication.fetcher.FetcherException;
@@ -13,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -30,12 +32,21 @@ public class JiveCommunityRssFetcher {
   private static final String TAGS_SEPARATOR = "AND";
   private static final String TAGS_ASSIGN = ":";
 
-  private final FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getInstance();
+  private static final FeedFetcherCache feedInfoCache = HashMapFeedInfoCache.getInstance();
 
   private String communityBaseFeedUrl;
   private String container;
   private String content;
   private String searchParams;
+
+  static JiveCommunityRssFetcher fetcherInstance;
+
+  public static JiveCommunityRssFetcher getInstance() {
+    if (fetcherInstance == null) {
+      fetcherInstance = new JiveCommunityRssFetcher();
+    }
+    return fetcherInstance;
+  }
 
   /**
    * Default constructor
@@ -90,8 +101,13 @@ public class JiveCommunityRssFetcher {
    * @throws FeedException
    * @throws FetcherException
    */
-  public SyndFeed getContentFeeds() throws IOException, FeedException, FetcherException {
-    return this.getFeedsFromJiveContentType(container, content);
+  public List<SyndEntry> getContentFeeds() throws IOException, FeedException, FetcherException {
+    SyndFeed feed = this.getFeedsFromJiveContentType(container, content);
+    if(feed == null || feed.getEntries() == null) {
+      return Collections.emptyList();
+    } else {
+      return (List<SyndEntry>) feed.getEntries();
+    }
   }
 
   /**
@@ -120,9 +136,20 @@ public class JiveCommunityRssFetcher {
     return feed;
   }
 
-
-  public SyndFeed getSearchFeeds() throws IOException, FeedException, FetcherException {
-    return this.getFeedFromSearch(searchParams);
+  /**
+   * Bean accessor for getting search feed from search params
+   * @return
+   * @throws IOException
+   * @throws FeedException
+   * @throws FetcherException
+   */
+  public List<SyndEntry> getSearchFeeds() throws IOException, FeedException, FetcherException {
+    SyndFeed feed = this.getFeedFromSearch(searchParams);
+    if(feed == null || feed.getEntries() == null) {
+      return Collections.emptyList();
+    } else {
+      return (List<SyndEntry>) feed.getEntries();
+    }
   }
 
   /**
